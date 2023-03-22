@@ -15,7 +15,7 @@ app.use(
 //templating engine
 app.set("views", `${__dirname}/views`);
 app.set("view engine", "ejs");
-app.get('/' , (req,res) => {
+app.get('/landing' , (req,res) => {
      return res.render('landing')
 })
 
