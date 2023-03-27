@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TASK MANAGER</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <body>
+<title> Task Manager</title>
+<link rel="stylesheet" href="css/landstyle.css">
 
-        <h2>Log In</h2>
+</head>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<div class="main">
+    <div class="register">
         
-        <form class="log" >
-          <label for="fname">Email:</label><br>
-          <input type="text" id="email" ><br>
-          <label for="lname">Password:</label><br>
+       
+        <img src="images/blockcept.png" style="height: 9ch; padding-left: 36ch; padding-top: 5ch;">
+       <!-- <img src="Logo.png" style="height:15ch; width: 20ch; padding-left: 20ch; "> -->
+        <h2>Log In</h2 >
+
+        
+        
+        <form name="RegForm" onsubmit="return validate()" id="register" method="post">
+            <label >Email:</label><br>
+          <input type="text" id="email" ><br><br>
+          <label >Password:</label><br>
           <input type="text" id="Password" ><br><br>
-          
-          <input type="checkbox" id="remember"  >
-          <label for="rem"> Remember Me</label>  &nbsp &nbsp
+          <br><br>
+          <label class="form-control">
+            <input type="checkbox" name="checkbox" />
+            Remember Me
+          </label>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp
+            
           <label>Forget Password?</label>
         
           <br>
           <h3>Sign In</h3>
         
         </form> 
+            <br><br>
         
-        
-        
-        </body>
+        </form>
+    </div>
+
+</div>
+</centre>
 </body>
+
 </html>
-
-
