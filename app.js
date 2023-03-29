@@ -35,8 +35,8 @@ app.set("view engine", "ejs");
 
 //routes
 require("./routes/r-index")(app);
-app.get('/login' , (req,res) => {
-    return res.render('login')
+app.get('/landing' , (req,res) => {
+    return res.render('landing')
 })
 
 const PORT = process.env.Port;
