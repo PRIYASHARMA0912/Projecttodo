@@ -2,8 +2,8 @@ const passport = require('passport');
 const Localstrategy = require('passport-local') .Strategy;
 
 const users = [
-    {id: 1 , email:'priyasharma7128119@gmail.com' , password:'Pri123'},
-    {id: 2 , email:'priyasharma@gmail.com' , password:'Pri123'} 
+    {id: 1 , email:'priyasharma@gmail.com' , password:'Pass'}
+    
 ]
 
 passport.use(new Localstrategy({
