@@ -35,11 +35,11 @@ app.set("view engine", "ejs");
 
 //routes
 require("./routes/r-index")(app);
-app.get('/landing' , (req,res) => {
+app.get('/' , (req,res) => {
     return res.render('landing')
 })
 
 const PORT = process.env.Port;
 app.listen(PORT, () => {
-    console.error(`App is Running at http://localhost:${PORT}/toDo`);
+    console.error(`App is Running at http://localhost:${PORT}`);
 });

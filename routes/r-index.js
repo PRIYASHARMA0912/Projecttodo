@@ -1,13 +1,11 @@
 const rToDo = require('./r-ToDo')
 
-module.exports = (app) => {
-    app.use("/toDo", rToDo)
-}
+
 
 const passport = require('passport');
 module.exports = (app) => {
-    app.post('/landing' ,
-    passport.authenticate('local' , { failureRedirect: '/landing'}),
+    app.post('/login' ,
+    passport.authenticate('local' , { failureRedirect: '/'}),
     (req , res) => {
         console.log("request body:" , req.body)
         console.log("user details:" , req.user)

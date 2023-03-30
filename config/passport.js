@@ -5,15 +5,17 @@ const users = [
     {id: 1 , email:'priyasharma@gmail.com' , password:'Pass'}
     
 ]
-
+ console.log("passport called");
 passport.use(new Localstrategy({
     usernameField: 'email',
     passwordField: 'password'
 },
    (email , password , done) => {
+      console.log(email,password);
      const user = users.find(user => {
         return user.email === email
      })
+     console.log("user");
      if(!user)
      {
         return done(null , false , {message:"incorrect email."});
@@ -21,12 +23,9 @@ passport.use(new Localstrategy({
      if(user.password !== password) {
         return done(null , false , {message: "incorrect password"});
      }
-
-     const returnUser = {
-        id: user.id,
-        isAuthenticated: true
-     };
-     return done(null , returnUser);
+     console.log("user2");
+     
+     return done(null , user);
    }
 ));
 
