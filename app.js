@@ -3,6 +3,8 @@ const app = express();
 const passport = require('passport');
 const session = require('express-session')
 require('dotenv').config({})
+const db = require('./models')
+
 
 //passport config
 require("./config/passport");
@@ -38,6 +40,16 @@ require("./routes/r-index")(app);
 app.get('/' , (req,res) => {
     return res.render('landing')
 })
+
+db.sequelize.authenticate()
+.then(() => {
+    console.log("Connection has been established succesfully.");
+})
+.catch((err) => {
+    console.error('unable to connect to the database' , err);
+});
+
+db.sequelize.sync().then(() => seedData())
 
 const PORT = process.env.Port;
 app.listen(PORT, () => {
