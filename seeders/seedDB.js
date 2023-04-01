@@ -1,5 +1,5 @@
 const user = require('../models/users')
-const bcrypt = require ('bcryptjs')
+const { hashpassword } = require('../controller/ToDoContoller')
 
 async function seedData() {
     const findFirstUser = await user.findOne({email: 'priyasharma@gmail.com'})
@@ -8,8 +8,12 @@ async function seedData() {
             firstName: 'Priya',
             lastName: 'Sharma',
             email:'priyasharma@gmail.com',
-            password: await bcrypt.hash('password' , 8)
+            password: hashpassword('password')
 
         })
     }
+}
+
+module.exports= {
+    seedData
 }

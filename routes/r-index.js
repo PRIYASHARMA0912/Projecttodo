@@ -1,7 +1,4 @@
-const rToDo = require('./r-ToDo')
-
-
-
+const rToDo = require('./r-ToDo');
 const passport = require('passport');
 module.exports = (app) => {
     app.post('/login' ,

@@ -4,6 +4,7 @@ const passport = require('passport');
 const session = require('express-session')
 require('dotenv').config({})
 const db = require('./models')
+const { seedData } = require('./seeders/seedDB')
 
 
 //passport config
@@ -37,7 +38,7 @@ app.set("view engine", "ejs");
 
 //routes
 require("./routes/r-index")(app);
-app.get('/' , (req,res) => {
+app.use('/' , (req,res) => {
     return res.render('landing')
 })
 
