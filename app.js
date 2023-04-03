@@ -50,7 +50,9 @@ db.sequelize.authenticate()
     console.error('unable to connect to the database' , err);
 });
 
-db.sequelize.sync().then(() => seedData())
+db.sequelize.sync({
+    force: true
+}).then(() => seedData())
 
 const PORT = process.env.Port;
 app.listen(PORT, () => {
