@@ -34,8 +34,16 @@ passport.serializeUser((user,done) => {
 });
 
 passport.deserializeUser(async (id ,done) => {
-    const findUser = await user.findOne({id})
-    return done(null,findUser);
+    const findUser = await user.findOne({id , include: 'role'})
+    const userData =  {
+        id: findUser.id,
+        name: findUser.firstName + ' ' + findUser.lastName,
+        email: findUser.email,
+        role: findUser.role.authority
+     }
+        
+    
+    return done(null, userData);
 });
 
 module.exports= passport
