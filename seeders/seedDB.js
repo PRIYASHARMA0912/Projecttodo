@@ -1,5 +1,6 @@
 const user = require('../models/users')
-const bcrypt = require('bcrypt')
+const { hashPassword } = require('../controller/commonController')
+const roles = require('../models/roles')
 async function seedData() {
 
 
@@ -28,7 +29,7 @@ async function seedData() {
             firstName: 'Priya',
             lastName: 'Sharma',
             email:'priyasharma@gmail.com',
-            password: await bcrypt.hash('pri@123' , 8),
+            password:  hashPassword('pri@123'),
             roleId: findAdminRole.id
 
         })

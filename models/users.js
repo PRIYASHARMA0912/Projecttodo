@@ -1,4 +1,5 @@
-const Sequelize= require('sequelize')
+const Sequelize= require('sequelize');
+const roles = require('./roles');
 const sequelize = require('./index').sequelize
 
 const user = sequelize.define('users', {
@@ -21,5 +22,5 @@ const user = sequelize.define('users', {
      },
 })
 
- user.belongsTo(role);
+ user.belongsTo(roles);
 module.exports= user
