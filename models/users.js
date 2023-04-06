@@ -2,7 +2,7 @@ const Sequelize= require('sequelize');
 const roles = require('./roles');
 const sequelize = require('./index').sequelize
 
-const user = sequelize.define('users', {
+const users = sequelize.define('users', {
     firstName: {
         type: Sequelize.STRING,
         allowNull : false
