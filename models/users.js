@@ -22,5 +22,5 @@ const users = sequelize.define('users', {
      },
 })
 
- user.belongsTo(roles);
+ users.belongsTo(roles);
 module.exports= users

@@ -17,3 +17,4 @@ const todos = sequelize.define('TODO' ,  {
 
 todos.belongsto(users)
 module.exports = todos
+
