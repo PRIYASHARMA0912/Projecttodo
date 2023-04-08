@@ -21,8 +21,12 @@ function onSubmitTodo(event) {
            
             const row = `<tr><td>${response.toDoObj.id}</td>
             <td>${response.toDoObj.todo}</td>
-            <td><input type=checkbox value=${response.toDoObj.isDone}></td></tr>`
+            <td><input type=checkbox id="checkboxx" title="check" placeholder="tick"  value=${response.toDoObj.isDone}> &nbsp &nbsp &nbsp
+            <button id="buttonn" onclick="updateToDo(event)">Update</button> &nbsp &nbsp &nbsp
+            <button id="buttonnn" onclick="deleteToDo(event)"> Delete </button></td></tr>`
             $('#toDoBody').append(row)
+            
+            
 
 
             // hide_loader();

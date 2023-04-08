@@ -36,6 +36,9 @@ const addTodo =  async(req, res) => {
 }
 
 
+const updateToDo = async (req,res) => {
+    
+}
 
 module.exports = {
     index,
