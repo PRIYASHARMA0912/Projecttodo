@@ -1,13 +1,16 @@
 function onSubmitTodo(event) {
     event.preventDefault()
     const todoData = $('#taskform').serializeArray()
+    
     const requestBody = todoData.reduce((obj, item) => {
-        console.log( obj,item)
-        console.log( "exactly",todoData)
+        
         obj[item.name] = item.value;
-        console.log('hey', obj, item)
+        console.log(obj);
         return obj;
     }, {});
+    
+    console.log(todoData);
+    console.log(requestBody);
     if (!todoData) {
         $('#errorMsg').html('Please fill all Mandatory Fields')
         return;
@@ -19,10 +22,11 @@ function onSubmitTodo(event) {
         success: function (response) {
             console.log(response)
             console.log("🚀 ~ file: toDo.js:26 ~ response:", response.toDoObj)
+            
            
             const row = `<tr><td>${response.toDoObj.id}</td>
             <td>${response.toDoObj.todo}</td>
-            <td><input type=checkbox id="checkboxx" title="check" placeholder="tick" onclick="check(event)" value=${response.toDoObj.isDone}> &nbsp &nbsp &nbsp
+            <td><input type=checkbox id="checkboxx" title="check"  data-idd= "${response.toDoObj.id}" placeholder="tick" onclick="check(this)" value=${response.toDoObj.isDone}> &nbsp &nbsp &nbsp
             <button id="buttonn" data-id="${response.toDoObj.id}" onclick="updateToDo(this)">Update</button> &nbsp &nbsp &nbsp
             <button id="buttonnn" onclick="deleteToDo(event)"> Delete </button></td></tr>`
             $('#toDoBody').append(row)
@@ -69,7 +73,7 @@ function deleteToDo(event){
     $.ajax({
         type: "DELETE",
         url : "/toDo/deleteToDo",
-        data : req.user.id,
+        data : requestBody,
         success: function(response){
              console.log(response);
         },
@@ -82,14 +86,15 @@ function deleteToDo(event){
 }
 
 
-function check(event){
+function check(_this){
     console.log("check is working");
+    const check = $(_this).data('idd')
     $.ajax({
-        type :"POST",
+        type :"PUT",
         url: "/todo/check",
-        data: req.user.id,
+        data: {check},
         success: function(response){
-            console.log(response.todoobjj);
+            console.log(response);
         }
     })
 }
@@ -111,3 +116,4 @@ function deleted(event){
         }
     })
 }
+
