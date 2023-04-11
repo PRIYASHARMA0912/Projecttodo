@@ -26,9 +26,9 @@
                 
                 <h1 >MY TO DO LIST </h1>
                 <br>
-                <button  type="submit" id="del" onclick="deleted(event)">Delete All</button><br><br>
+                <button  type="submit" id="del"   onclick="deleted(event)">Delete All</button><br><br>
                 <div id="tasks">
-        <table class="table table-bordered" onload="zamzam">
+        <table class="table table-bordered" >
             <thead>
                 <tr>
                     <th>Id</th>
@@ -39,7 +39,20 @@
                 </tr>
             </thead>
             <tbody id="toDoBody">
+                <% findAllToDo.forEach((index) =>{%>
+            <%= index%>
+            <tr>
+            <td>
+                <%= index.id%>
+            </td>
+            <td>
+                <%= index.todo%>
+            </td>
+            <td>
+                <%= index.isDone%>
+            </td></tr>
 
+          <% })%>
             </tbody>
         </table>
                 </div>

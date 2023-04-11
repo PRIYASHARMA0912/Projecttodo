@@ -3,9 +3,10 @@ const todos = require("../models/todotable")
 const TODO = []
 let id = 0
 
-const index = (req, res) => {
+const index = async(req, res) => {
     try {
-        return res.render('ToDo')
+        const findAllToDo = await todos.findAll({where : { userId : req.user.id}})
+        return res.render('ToDo' , {findAllToDo})
     } catch (error) {
         console.error(error)
     }
@@ -38,7 +39,7 @@ const addTodo =  async(req, res) => {
     };
 }
 
-
+/*
 const updateToDo = async (req,res) => {
     try{
          console.log(req.body)
@@ -47,7 +48,7 @@ const updateToDo = async (req,res) => {
           console.error(error);
     }
 }
-/*const deleteToDo = async (req ,res) => {
+const deleteToDo = async (req ,res) => {
 
     try{
         
@@ -66,11 +67,11 @@ const check = async(req,res) => {
     try{
         
         
-         console.log("working");
-         const usserId = req.body.check
-         console.log(usserId);
-        const result= await todos.update({ isDone: "true"} , {where: {userId: usserId}})
-        return res.json({ message: 'Task completed successfully!', status: true, toDoObjj : result })
+         
+         const checked = req.body.check
+         console.log(checked);
+        const result= await todos.update({ isDone: "true"} , {where: {Id: checked}})
+        return res.json({ message: 'Task completed successfully!', status: true, toDoCheck : result })
     }catch (error) {
         console.error(error)
     }
@@ -78,8 +79,10 @@ const check = async(req,res) => {
 
 const deleteall = async(req,res) => {
     try{
-        console.log("reached");
-       const deleted = await todos.destroy({where:{} , truncate : true})
+        
+        let useeer= req.user.id
+        
+       const deleted = await todos.destroy({where:{userId :useeer } , truncate : true})
        return res.json({ message: 'ToDo deleted successfully ', status: true })
         
     }catch (error) {
@@ -91,7 +94,7 @@ module.exports = {
     index,
     addTodo,
    // deleteToDo,
-    updateToDo,
+   // updateToDo,
     check,
     deleteall
 }
