@@ -39,37 +39,37 @@ const addTodo =  async(req, res) => {
     };
 }
 
-/*
+
 const updateToDo = async (req,res) => {
     try{
-         console.log(req.body)
-         console.log(req.user)
+        const Update = req.body.toDoId
+ 
+        const up = await todos.findOne( {where: {id : Update}})
+         return res.json({ message: 'Task updated successfully!', status: true , toDoObj1 :up})
     }catch(error){
           console.error(error);
     }
 }
+
+
 const deleteToDo = async (req ,res) => {
 
     try{
+        const deleteId = req.body.toDelete
+        console.log(deleteId)
+        
         
             
-          });
-          
-         
-        
-    } catch (error){
-
+          } catch (error){
+            console.log(error)
     }
-}
- */
+}  
+ 
 
 const check = async(req,res) => {
     try{
-        
-        
-         
          const checked = req.body.check
-         console.log(checked);
+         
         const result= await todos.update({ isDone: "true"} , {where: {Id: checked}})
         return res.json({ message: 'Task completed successfully!', status: true, toDoCheck : result })
     }catch (error) {
@@ -93,8 +93,8 @@ const deleteall = async(req,res) => {
 module.exports = {
     index,
     addTodo,
-   // deleteToDo,
-   // updateToDo,
+    deleteToDo,
+    updateToDo,
     check,
     deleteall
 }

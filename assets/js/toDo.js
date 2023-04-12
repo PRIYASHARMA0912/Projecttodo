@@ -26,7 +26,8 @@ function onSubmitTodo(event) {
             const row = `<tr><td>${response.toDoObj.id}</td>
             <td>${response.toDoObj.todo}</td>
             <td><input type=checkbox id="checkboxx" title="check"  data-id= "${response.toDoObj.id}" placeholder="tick" onclick="check(this)" value=${response.toDoObj.isDone}> &nbsp &nbsp &nbsp
-            </td></tr>`
+          
+           <button id="button2" onclick="updateToDo(this)" data-update= "${response.toDoObj.id}" > Update</button></td></tr>`
             $('#toDoBody').append(row)
             
             
@@ -46,32 +47,32 @@ function onSubmitTodo(event) {
 
 function updateToDo(_this){
     
-    const toDoId = $(_this).data('id')
+    const toDoId = $(_this).data('update')
     console.log($(_this));
     $.ajax({
         type : "PUT",
-        url:"/toDo/updateToDo",
+        url:"/toDo/updateToDo",             
         data: {toDoId},
-        success: function(response){
+        success: function(response){  
+            $('#taskinput').val(response.toDoObj1.todo)
             console.log(response);
 
         },
         error: function (response) {
             // hide_loader();
-
         },
     })
     
 }
 
 
-function deleteToDo(event){
-    
-    event.preventDefault()
+function deleteToDo(_this){
+    console.log("working");
+     const toDelete = $(_this).data('del')
     $.ajax({
         type: "DELETE",
         url : "/toDo/deleteToDo",
-        data : requestBody,
+        data :{toDelete} ,
         success: function(response){
              console.log(response);
         },
@@ -79,7 +80,6 @@ function deleteToDo(event){
             // hide_loader();
 
         },
-        
     })
 }
 

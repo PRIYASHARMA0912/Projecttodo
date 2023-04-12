@@ -165,7 +165,7 @@ footer{
 
 }
 
-#toDoBody  tr td button#buttonn{
+#toDoBody  tr td button#button1{
 	height: 39px;
 	width: 67px;
 	background-color: white;
@@ -175,7 +175,7 @@ footer{
 	border-color: black;
 }
 
-#toDoBody  tr td button#buttonnn{
+#toDoBody  tr td button#button2{
 	height: 39px;
 	width: 67px;
 	background-color: white;
