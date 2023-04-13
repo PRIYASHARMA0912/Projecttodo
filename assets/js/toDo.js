@@ -55,6 +55,14 @@ function updateToDo(_this){
         data: {toDoId},
         success: function(response){  
             $('#taskinput').val(response.toDoObj1.todo)
+            $('#tasksubmit').val("Update Task")
+            console.log("workinggg");
+            $("#tasksubmit").onclick(function(){
+                $("#taskinput").html("");
+               
+              });
+            
+            
             console.log(response);
 
         },
