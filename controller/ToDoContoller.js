@@ -16,30 +16,34 @@ const addTodo =  async(req, res) => {
     try {
         const reqData = req.body;
         const userId = req.user.id;
+        console.log(req.body)
+        console.log(req.param)
+        console.log(req.query)
+
         
-        if (!reqData.taskinput) {
+        if (!reqData.toDoData) {
             return res.send('please fill all mandatory fields') // validation
         }
         
-        const insertData = await todos.create({
-            todo : reqData.taskinput,
+        const insertDat̥̥a = await todos.create({
+            todo : reqData.toDoData,
             userId,
             isDone :false,
             
         })
         
       
-        if(!insertData) {
+        if(!insertDat̥̥a) {
             return  res.send("Something went wrong");
         }
         
-        return res.json({ message: 'ToDo added successfully!', status: true, toDoObj : insertData })
+        return res.json({ message: 'ToDo added successfully!', status: true, toDoObj : insertDat̥̥a })
     } catch (error) {
         console.error(error)
     };
 }
 
-
+/*
 const updateToDo = async (req,res) => {
     try{
         const Update = req.body.toDoId
@@ -60,7 +64,7 @@ const updateToDo = async (req,res) => {
     }
 }
 
-
+*/
 const deleteToDo = async (req ,res) => {
 
     try{
@@ -70,7 +74,7 @@ const deleteToDo = async (req ,res) => {
         
             
           } catch (error){
-            console.log(error)
+            console.log(erro̥r)
     }
 }  
  
@@ -78,6 +82,9 @@ const deleteToDo = async (req ,res) => {
 const check = async(req,res) => {
     try{
          const checked = req.body.check
+         console.log("req.body", req.body)
+         console.log("req.parametre", req.param)
+         console.log("req.query", req.query)
          
         const result= await todos.update({ isDone: "true"} , {where: {Id: checked}})
         return res.json({ message: 'Task completed successfully!', status: true, toDoCheck : result })
@@ -98,12 +105,72 @@ const deleteall = async(req,res) => {
         console.error(error)
     }
 }
+/*
+
+const getSingleToDo = async(req,res)=>{
+    try{
+        
+        console.log("hyyy");
+        console.log("req bodyy" ,req.body )
+        console.log("req param" ,req.params )
+        console.log("req query" ,req.query )
+        const todoId = req.query.update;
+        console.log(todoId);
+        //const getAToDo = await todos.findOne({where:{id:todoId}})
+        //console.log(getAToDo);
+        const getAToDo= { name: "priya"}
+        return res.json({message:"update task working",status:true,toDoObj:getAToDo})
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+/*
+
+const getSingleToDo = async(req,res)=>{
+    try{
+        console.log("hyyyy");
+        const todoId = req.query.update;
+        console.log("req bodyy" ,req.body )
+        console.log("req param" ,req.param )
+        console.log("req query" ,req.query )
+        console.log(todoId);
+        const getAToDo = await todos.findOne({where:{Id:todoId}})
+        console.log(getAToDo);
+        return res.json({message:"update task working",status:true,toDoObjGet:getAToDo})
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+*/
+
+
+const getSingleToDo = async(req,res)=>{
+    try{
+        const todoId = req.query.update;
+        console.log("req body" , req.body)
+        console.log("req query" , req.query)
+        console.log("req paramss" , req.params)
+        console.log(todoId);
+        const getAToDo = await todos.findOne({where:{id:todoId}})
+        console.log(getAToDo);
+        return res.json({message:"update task working",status:true,toDoObj:getAToDo})
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+
+
 
 module.exports = {
     index,
     addTodo,
     deleteToDo,
-    updateToDo,
+    //updateToDo,
     check,
-    deleteall
+    deleteall,
+    getSingleToDo
 }

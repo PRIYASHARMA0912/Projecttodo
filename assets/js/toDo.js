@@ -1,81 +1,34 @@
-function onSubmitTodo(event) {
+
+function onSubmitToDo(event){
     event.preventDefault()
-    const todoData = $('#taskform').serializeArray()
-    
-    const requestBody = todoData.reduce((obj, item) => {
-        
-        obj[item.name] = item.value;
-        console.log(obj);
-        return obj;
-    }, {});
-    
-    
-    if (!requestBody) {
-        $('#errorMsg').html('Please fill all Mandatory Fields')
-        return;
-    }
+    const toDoData = $('#taskinput').val()
     $.ajax({
-        type: "POST",
-        url: "/toDo/addToDo",
-        data: requestBody,
-        success: function (response) {
-            
-            console.log("🚀 ~ file: toDo.js:26 ~ response:", response.toDoObj)
-            
+        type:"POST",
+        url:"/toDo/addToDo",
+        data:{ toDoData },
+        success: function(response){
+           console.log( "hyy", response.toDoObj);
+           const row = `<tr><td>${response.toDoObj.id}</td>
+           <td>${response.toDoObj.todo}</td>
+           <td><input type=checkbox id="checkboxx" title="check"  data-toDoid= "${response.toDoObj.id}"  onclick="check(this)" value=${response.toDoObj.isDone}>
+           <button id="btn" onclick = "getToDo(this)" data-update = "${response.toDoObj.id}">Update</button></td>
            
-            const row = `<tr><td>${response.toDoObj.id}</td>
-            <td>${response.toDoObj.todo}</td>
-            <td><input type=checkbox id="checkboxx" title="check"  data-id= "${response.toDoObj.id}" placeholder="tick" onclick="check(this)" value=${response.toDoObj.isDone}> &nbsp &nbsp &nbsp
-          
-           <button id="button2" onclick="updateToDo(this)" data-update= "${response.toDoObj.id}" > Update</button></td></tr>`
-            $('#toDoBody').append(row)
-            
-            
-
-
-            // hide_loader();
-
+           </tr>`
+           $('#toDoBody').append(row)
+           
         },
         error: function (response) {
             // hide_loader();
-
         },
     });
 
-}
-
-
-function updateToDo(_this){
+        }
     
-    const toDoId = $(_this).data('update')
-    console.log($(_this));
-    $.ajax({
-        type : "PUT",
-        url:"/toDo/updateToDo",             
-        data: {toDoId},
-        success: function(response){  
-            $('#taskinput').val(response.toDoObj1.todo)
-            $('#tasksubmit').val("Update Task")
-            console.log("workinggg");
-            $("#tasksubmit").onclick(function(){
-                $("#taskinput").html("");
-               
-              });
-            
-            
-            console.log(response);
 
-        },
-        error: function (response) {
-            // hide_loader();
-        },
-    })
-    
-}
+
 
 
 function deleteToDo(_this){
-    console.log("working");
      const toDelete = $(_this).data('del')
     $.ajax({
         type: "DELETE",
@@ -92,9 +45,11 @@ function deleteToDo(_this){
 }
 
 
+
+
 function check(_this){
     
-    const check = $(_this).data('id')
+    const check = $(_this).data('todoid')
     $.ajax({
         type :"PUT",
         url: "/toDo/check",
@@ -105,21 +60,51 @@ function check(_this){
     })
 }
 
-function deleted(event){
-    
-    
 
-    event.preventDefault()
+
+function deleted(event){
+  event.preventDefault()
     $('#toDoBody').empty()
-    
     $.ajax({
         type :"DELETE",
         url: "/toDo/deleteall",
-        
-        success: function(response){
-            console.log(response);
-           
+        success: function(response̥̥̥̥){
+            console.log(response);  
         }
     })
 }
 
+
+
+function getToDo(_this){
+    const update = $(_this).data('update');
+    $.ajax({
+        type:"GET",
+        url: "/toDo/getSingleToDo",
+        data:{update},
+        success :function(response){
+            console.log(response);
+            $('#taskinput').val(response.toDoObj.todo)
+            $('#tasksubmit').val("Update Task") ;
+            $('#submitToDo').html(`
+            <input type="submit" id="updatetasksubmit" value="Update Task" data-updateid=${response.toDoObj.id} onsubmit="updateTask(this)">`)  
+        }
+    })
+}
+
+
+function updateTask(_this){
+    
+
+    const postToDo = $(_this).data('updateid');
+    console.log(postToDo);
+    
+    $.ajax({
+        type: "POST",
+        url : "toDo/postToDo",
+        data: {postToDo},
+        success : function(response){
+            console.log(response);
+        }
+    })
+}

@@ -11,9 +11,9 @@
         <h1><b>TASKS FOR THE DAY</b></h1>
         <br>
         <br>
-            <form id="taskform" onsubmit="onSubmitTodo(event)">
+            <form id="taskform">
                 <input type="text" name="taskinput" id="taskinput" placeholder=" Enter your plan for the day">
-                <input type="submit" id="tasksubmit" value="Add Task">
+                <div id="submitToDo"><input type="submit" id="tasksubmit" value="Add Task" onclick="onSubmitToDo(event)"></div>
                 <br>
                 <span id="errorMsg"></span>
 
@@ -51,6 +51,7 @@
             <td>
                 <input type="checkbox" title="check" id="checkboxx" onclick="check(this)"
                         <%= index.isDone? 'checked':'' %> >
+                                    
             </td></tr>
 
           <% })%>
