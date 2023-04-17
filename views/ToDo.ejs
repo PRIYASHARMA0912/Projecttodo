@@ -13,7 +13,7 @@
         <br>
             <form id="taskform">
                 <input type="text" name="taskinput" id="taskinput" placeholder=" Enter your plan for the day">
-                <div id="submitToDo"><input type="submit" id="tasksubmit" value="Add Task" onclick="onSubmitToDo(event)"></div>
+                <div id="submitTodo"><input type="submit" id="tasksubmit" value="Add Task" onclick="onSubmitToDo(event)"></div>
                 <br>
                 <span id="errorMsg"></span>
 
@@ -51,6 +51,7 @@
             <td>
                 <input type="checkbox" title="check" id="checkboxx" onclick="check(this)"
                         <%= index.isDone? 'checked':'' %> >
+                        <button id="btn" data-todoId="<%-index.id%>" onclick = "getTodo(this)" >Update</button>
                                     
             </td></tr>
 

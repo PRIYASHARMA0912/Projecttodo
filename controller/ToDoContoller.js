@@ -105,45 +105,7 @@ const deleteall = async(req,res) => {
         console.error(error)
     }
 }
-/*
 
-const getSingleToDo = async(req,res)=>{
-    try{
-        
-        console.log("hyyy");
-        console.log("req bodyy" ,req.body )
-        console.log("req param" ,req.params )
-        console.log("req query" ,req.query )
-        const todoId = req.query.update;
-        console.log(todoId);
-        //const getAToDo = await todos.findOne({where:{id:todoId}})
-        //console.log(getAToDo);
-        const getAToDo= { name: "priya"}
-        return res.json({message:"update task working",status:true,toDoObj:getAToDo})
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-/*
-
-const getSingleToDo = async(req,res)=>{
-    try{
-        console.log("hyyyy");
-        const todoId = req.query.update;
-        console.log("req bodyy" ,req.body )
-        console.log("req param" ,req.param )
-        console.log("req query" ,req.query )
-        console.log(todoId);
-        const getAToDo = await todos.findOne({where:{Id:todoId}})
-        console.log(getAToDo);
-        return res.json({message:"update task working",status:true,toDoObjGet:getAToDo})
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-*/
 
 
 const getSingleToDo = async(req,res)=>{
@@ -163,13 +125,28 @@ const getSingleToDo = async(req,res)=>{
 }
 
 
+const updatedTask = async(req,res)=>{
+    try{
+        console.log(req.body)
+        const getUpdatedTodoId = req.body.todoId;
+        console.log("response from updated task",getUpdatedTodoId)
+        
+        
+        console.log(getUpdatedTodoId);
+        const updateTodo = await todos.update({todo: req.body.value},{where:{id:getUpdatedTodoId}})
+        return res.json({message:"update on screen working",status:true,updatedObj:updateTodo})
+    }
+    catch(error){
+            console.log(error)
+    }
+}
 
 
 module.exports = {
     index,
     addTodo,
     deleteToDo,
-    //updateToDo,
+    updatedTask ,
     check,
     deleteall,
     getSingleToDo

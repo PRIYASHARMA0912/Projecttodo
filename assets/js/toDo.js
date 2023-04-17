@@ -1,4 +1,3 @@
-
 function onSubmitToDo(event){
     event.preventDefault()
     const toDoData = $('#taskinput').val()
@@ -86,25 +85,25 @@ function getToDo(_this){
             console.log(response);
             $('#taskinput').val(response.toDoObj.todo)
             $('#tasksubmit').val("Update Task") ;
-            $('#submitToDo').html(`
-            <input type="submit" id="updatetasksubmit" value="Update Task" data-updateid=${response.toDoObj.id} onsubmit="updateTask(this)">`)  
+            $('#submitTodo').html(`
+            <input type="button" id="updatetasksubmit" value="Update Task" data-todoid=${response.toDoObj.id} onclick="updatetask(this)">`)  
         }
     })
 }
-
-
-function updateTask(_this){
     
 
-    const postToDo = $(_this).data('updateid');
-    console.log(postToDo);
-    
+function updatetask(_this){
+    const todoId = $(_this).data('todoid');
+    const value = $("#taskinput").val();
+    console.log(todoId);
     $.ajax({
-        type: "POST",
-        url : "toDo/postToDo",
-        data: {postToDo},
+        type: "PUT",
+        url : "toDo/updatedTask",
+        data: {todoId,value},
         success : function(response){
             console.log(response);
+            window.location.reload();
         }
     })
 }
+
