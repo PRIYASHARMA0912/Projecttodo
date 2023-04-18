@@ -8,7 +8,15 @@ module.exports = (app) => {
         console.log("user details:" , req.user)
         console.log("user authenticated:" , req.isAuthenticated())
         return res.redirect('/toDo/');
-    }    );
+    }    )
+
+    app.post('/logout', function  (req, res )
+    {req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+      });
+    });
+
     app.use("/toDo" , rToDo)
 
 }

@@ -185,4 +185,26 @@ footer{
 	border-color: black;
 }
 
-  
+#updatetasksubmit{
+	font-size: 1.7rem;
+	font-weight: 700;
+	background-image: linear-gradient(to right,rgb(145, 33, 160), rgb(245, 56, 232));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+nav ul li a#log{
+	background-color:#faaca8;
+	color: black;
+	padding: 14px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: x-large;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border-radius: 5ch;
+	border-color: black;
+    
+}

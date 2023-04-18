@@ -108,7 +108,7 @@ const deleteall = async(req,res) => {
 
 
 
-const getSingleToDo = async(req,res)=>{
+const getSingleTodo = async(req,res)=>{
     try{
         const todoId = req.query.update;
         console.log("req body" , req.body)
@@ -134,12 +134,15 @@ const updatedTask = async(req,res)=>{
         
         console.log(getUpdatedTodoId);
         const updateTodo = await todos.update({todo: req.body.value},{where:{id:getUpdatedTodoId}})
+        console.log(updateTodo);
         return res.json({message:"update on screen working",status:true,updatedObj:updateTodo})
     }
     catch(error){
             console.log(error)
     }
 }
+
+
 
 
 module.exports = {
@@ -149,5 +152,5 @@ module.exports = {
     updatedTask ,
     check,
     deleteall,
-    getSingleToDo
+    getSingleTodo
 }

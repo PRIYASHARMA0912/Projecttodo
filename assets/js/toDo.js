@@ -10,7 +10,7 @@ function onSubmitToDo(event){
            const row = `<tr><td>${response.toDoObj.id}</td>
            <td>${response.toDoObj.todo}</td>
            <td><input type=checkbox id="checkboxx" title="check"  data-toDoid= "${response.toDoObj.id}"  onclick="check(this)" value=${response.toDoObj.isDone}>
-           <button id="btn" onclick = "getToDo(this)" data-update = "${response.toDoObj.id}">Update</button></td>
+           <button id="btn" onclick = "getTodo(this)" data-update = "${response.toDoObj.id}">Update</button></td>
            
            </tr>`
            $('#toDoBody').append(row)
@@ -75,7 +75,7 @@ function deleted(event){
 
 
 
-function getToDo(_this){
+function getTodo(_this){
     const update = $(_this).data('update');
     $.ajax({
         type:"GET",
@@ -84,26 +84,35 @@ function getToDo(_this){
         success :function(response){
             console.log(response);
             $('#taskinput').val(response.toDoObj.todo)
-            $('#tasksubmit').val("Update Task") ;
+            //$('#tasksubmit').val("Update Task") ;
             $('#submitTodo').html(`
-            <input type="button" id="updatetasksubmit" value="Update Task" data-todoid=${response.toDoObj.id} onclick="updatetask(this)">`)  
+            <input type="button" id="updatetasksubmit" onclick="updatetask(this)" value="Update Task" data-todoid=${response.toDoObj.id}>`)
+            
+           
         }
     })
 }
-    
+
 
 function updatetask(_this){
+   
     const todoId = $(_this).data('todoid');
     const value = $("#taskinput").val();
+    console.log("reached updatetask");
     console.log(todoId);
     $.ajax({
-        type: "PUT",
-        url : "toDo/updatedTask",
-        data: {todoId,value},
-        success : function(response){
+        type:"PUT",
+        url:"/toDo/updatedTask",
+        data:{todoId,value},
+        success:
+        function(response){
             console.log(response);
             window.location.reload();
+          
         }
     })
 }
+
+
+
 

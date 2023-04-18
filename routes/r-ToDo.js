@@ -7,6 +7,6 @@ router.put('/updatedTask' , toDoController.updatedTask )
 router.post('/deleteToDo' , toDoController.deleteToDo)
 router.put('/check',toDoController.check)
 router.delete('/deleteall' , toDoController.deleteall )
-router.get('/getSingleToDo' ,toDoController.getSingleToDo)
+router.get('/getSingleToDo' ,toDoController.getSingleTodo)
 
 module.exports = router

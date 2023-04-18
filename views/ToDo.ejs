@@ -7,6 +7,18 @@
     </script>
 </head>
 <body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" id="log" >Log Out</a></li>
+            <li><a type="button">User Profile</a></li>
+           
+        </ul>
+    </nav>
+    <form id="logout-form" action="/logout" method="POST" style="display: none;">
+        <input type="hidden" name="_method" value="POST">
+        {{ csrf_field() }}
+    </form>
        <header>
         <h1><b>TASKS FOR THE DAY</b></h1>
         <br>
@@ -51,7 +63,8 @@
             <td>
                 <input type="checkbox" title="check" id="checkboxx" onclick="check(this)"
                         <%= index.isDone? 'checked':'' %> >
-                        <button id="btn" data-todoId="<%-index.id%>" onclick = "getTodo(this)" >Update</button>
+                        
+                        <button id="btn" onclick = "getTodo(this)" data-update = "<%-index.id%>">Update</button></td>
                                     
             </td></tr>
 
