@@ -17,6 +17,11 @@ module.exports = (app) => {
       });
     });
 
+
+    app.post('/userProfile' , function (req , res) {
+        
+        res.render('userProfile');
+    })
     app.use("/toDo" , rToDo)
 
 }

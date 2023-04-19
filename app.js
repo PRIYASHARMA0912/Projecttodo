@@ -42,6 +42,10 @@ app.use('/' , (req,res) => {
     return res.render('landing')
 })
 
+app.use('/userProfile' , (req,res) => {
+    return res.render('userProfile');
+})
+
 db.sequelize.authenticate()
 .then(() => {
     console.log("Connection has been established succesfully.");

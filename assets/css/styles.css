@@ -195,7 +195,7 @@ footer{
 	transition: 0.4s;
 }
 
-nav ul li a#log{
+nav ul li a#log , nav ul li a#profile{
 	background-color:#faaca8;
 	color: black;
 	padding: 14px 25px;
@@ -207,4 +207,18 @@ nav ul li a#log{
 	border-radius: 5ch;
 	border-color: black;
     
+}
+
+div button #log , div button #profile{
+	background-color:#eeecec;
+	color: black;
+	padding: 14px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: x-large;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border-radius: 5ch;
+	border-color: black;
+	appearance: auto;
 }
