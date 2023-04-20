@@ -228,7 +228,7 @@ nav button .btn1 , nav button .btn2{
 	pointer-events: none;
 }
 
-a.btn2  , a.btn1{
+input#userButton  , a#btn1{
 	margin-right: 8px;
 	background-color: white;
 	border-color: black;
@@ -238,4 +238,60 @@ a.btn2  , a.btn1{
 
 }
 
+ form#formcontainer 
+ {
+	background-color:white;
+    width: 80%;
+    font-size:25px;
+    border-radius: 281px;
+    border: 1px soid rgba(19, 17, 17, 0.795)
+    box-shadow  2px 2px 15px  
+    rgba(2, 2, 2, 0.3);
+    color:rgb(14, 13, 13);
+    height: 600px;
+	margin-left: 10ch;
+ }
 
+ .form-control {
+    display: block;
+    width: 66%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+	
+    
+ }
+
+ label{
+	font-family: Arial, Helvetica, sans-serif;
+    font-size  :20px;
+	margin-left: 20ch;
+    margin-top: 2ch;
+    
+ }
+
+ input.form-control{
+	margin-left: 20ch;
+ }
+
+ button#btnprimary{
+	margin-left: 20ch;
+ }
+
+ .modal-header{
+	margin-left: 20ch
+ }
+
+button .btn{
+	margin-left: 20ch
+}
+
+.mb-3 ,.modal-title fs-5{
+	margin-left: 20ch;
+	text-align: justify;
+}

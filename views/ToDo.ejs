@@ -2,67 +2,78 @@
 <html lang="en">
 <head>
     <%-include('./partials/head.ejs')%>  
-    <script>
-        
-    </script>
+    <link rel="stylesheet" href="/css/styles.css" type="text/css" >
+    <script src="https://kit.fontawesome.com/c9746b4779.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <script src="https://kit.fontawesome.com/c9746b4779.js" crossorigin="anonymous"></script>
 
-<!--
-    <nav class="navbar">
-        <ul>
-            <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" id="log" >Log Out</a></li>
-            <br>
-            <li><a type="button" onclick="event.preventDefault(); document.getElementById('userprofile').submit()"id="profile">User Profile</a></li>
+      <nav class="navbar">
+        
+            
+            <div id="buTTon"><input id="userButton" type="submit" value="User Profile"   onclick="userProfile(event)"  ></div>&nbsp &nbsp &nbsp &nbsp 
+            <a type="button" href="/logout" id="btn1">Log Out</a>
            
-        </ul>
+        
     </nav>
-    <form id="logout-form" action="/logout" method="POST" style="display: none;">
-        <input type="hidden" name="_method" value="POST">
-        {{ csrf_field() }}
-    </form>
-    
-    <form id="userprofile" action="/userProfile" method="POST" style="display: none;">
-        <input type="hidden" name="_method" value="POST">
-        {{ csrf_field() }}
-    </form>
-    -->
 
-    <nav class="navbar">
-       <!-- <button type="button" class="btn1" onclick="user(event)">User Profile</button>-->
-       <a type="button" class="btn1" href="/userProfile" onclick="onload(event)" >User Profile</a>
-       <!--<button type="button" class="btn1"  action="/userProfile" method="get">User Profile</button>-->
-         <a type="button" class="btn2" href="/logout" >Log Out</a>
-       </nav>
-
-
-       <form class="form container">
+       <form class="form container" id="formcontainer">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <label for="exampleInputEmail1" class="form-label" >Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+         
+          
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1">
+         
+          <i class="fa-solid fa-pen"></i>
+          <div><button type="button" data-toggle="modal" class="btn" data-target="#exampleModal">Change Password</button></div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <input type="password" class="form-control" placeholder="Old Password" id="oldPass">
+                  <input type="password" class="form-control" placeholder="New Password" id="newPass">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputfirstName" class="form-label">First Name</label>
+          <label for="exampleInputfirstName" class="form-label" >First Name</label>
           <input type="text" class="form-control" id="exampleInputfirstName">
+          
         </div>
         <div class="mb-3">
           <label for="exampleInputlastname" class="form-label">Last Name</label>
           <input type="text" class="form-control" id="exampleInputlastname">
+      
         </div>
-        
+        <button type="submit" class="btn btn-primary" id="btnprimary">Cancel</button>
+        <button type="submit" class="btn btn-primary">Update</button>
+      
+
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-       <header>
+       <header id="header">
         <h1><b>TASKS FOR THE DAY</b></h1>
         <br>
         <br>
             <form id="taskform">
                 <input type="text" name="taskinput" id="taskinput" placeholder=" Enter your plan for the day">
+                
+                
                 <div id="submitTodo"><input type="submit" id="tasksubmit" value="Add Task" onclick="onSubmitToDo(event)"></div>
                 <br>
                 <span id="errorMsg"></span>
@@ -71,14 +82,14 @@
           <br>
     
         </header>
-        <main>
+        <main id="main">
             <section class="tasklist">
                 
                 <h1 >MY TO DO LIST </h1>
                 <br>
                 <button  type="submit" id="del"   onclick="deleted(event)">Delete All</button><br><br>
                 <div id="tasks">
-        <table class="table table-bordered" >
+        <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
                     <th>Id</th>

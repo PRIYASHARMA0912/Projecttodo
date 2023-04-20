@@ -113,9 +113,31 @@ function updatetask(_this){
     })
 }
 
-
-function showdata(event){
-$(".form-label1").val()= "Priyaa"
-$(".form-label1").val()= "Priyaa"
+function userProfile(_this){
+    event.preventDefault()
+    console.log("this is working");
+    document.querySelector('#header').style.display = "none";
+    document.querySelector('#header').style.pointerEvents = "none";
+     document.querySelector('#main').style.display = "none";
+     document.querySelector('#main').style.pointerEvents = "none";
+     document.querySelector('.form').style.display = "block";
+     document.querySelector('.form').style.pointerEvents = "all";
+    $('#userButton').val("Home");
+    $('#buTTon').html(`<input id="homeButton" type="submit" value="Home" onclick="gotoHome(event)">`);
+   
+    $.ajax({
+        type:"GET",
+        url: "/toDo/userProfile",
+        
+        success :
+         function(response){
+            $('#exampleInputfirstName').val(response.object.firstName);
+            $('#exampleInputlastname').val(response.object.lastName);
+            $('#exampleInputEmail1').val(response.object.email);
+            $('#exampleInputPassword1').val(response.object.password);
+         }
+    })
+function gotoHome(event){
+    window.location.reload();
+}           
 }
-

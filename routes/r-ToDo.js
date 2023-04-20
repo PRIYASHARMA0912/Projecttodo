@@ -8,5 +8,7 @@ router.post('/deleteToDo' , toDoController.deleteToDo)
 router.put('/check',toDoController.check)
 router.delete('/deleteall' , toDoController.deleteall )
 router.get('/getSingleToDo' ,toDoController.getSingleTodo)
+router.get('/userProfile' , toDoController.userData)
+
 
 module.exports = router

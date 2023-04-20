@@ -1,4 +1,5 @@
 const todos = require("../models/todotable")
+const users = require("../models/users")
 
 const TODO = []
 let id = 0
@@ -43,28 +44,7 @@ const addTodo =  async(req, res) => {
     };
 }
 
-/*
-const updateToDo = async (req,res) => {
-    try{
-        const Update = req.body.toDoId
- 
-        const up = await todos.findOne( {where: {id : Update}})
-        
-        if(!up.isDone){
-        
-        return res.json({ message: 'Task in updation !', status: true, toDoObj1 : up })
-       }
-        
 
-    else{console.log("task is already completed")}
-        
-         
-    }catch(error){
-          console.error(error);
-    }
-}
-
-*/
 const deleteToDo = async (req ,res) => {
 
     try{
@@ -142,7 +122,18 @@ const updatedTask = async(req,res)=>{
     }
 }
 
+const userData = async(req , res)=>{
+    try{
+        console.log("userdata is being processed");
+        console.log(req.user.id)
+        const currentUser = await users.findOne({where:{id:req.user.id}})
 
+        console.log(currentUser);
+        return res.json({message:"update on screen working",status:true, object :currentUser})
+    }catch(error){
+        console.log(error)
+    }
+}
 
 
 module.exports = {
@@ -152,5 +143,6 @@ module.exports = {
     updatedTask ,
     check,
     deleteall,
-    getSingleTodo
+    getSingleTodo,
+    userData
 }

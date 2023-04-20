@@ -18,10 +18,7 @@ module.exports = (app) => {
     });
 
 
-    app.get('/userProfile' , function (req , res) {
-        
-        res.render('userProfile');
-    })
+    
     app.use("/toDo" , rToDo)
 
 }
