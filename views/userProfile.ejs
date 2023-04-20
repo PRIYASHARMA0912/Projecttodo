@@ -4,57 +4,50 @@
 <title> User Profile</title>
 <link rel="stylesheet" href="css/profile.css">
 <script>    
-    function validate() {    
-        var fname = document.RegForm.fname;    
-        var lname = document.RegForm.lname;    
-            
-        var gender = document.RegForm.gender;    
-        var email = document.RegForm.email;    
-           
-    
-
-        if (fname.value.length <= 0) {    
-            alert("FirstName is required");    
-            fname.focus();    
-            return false;    
-        }    
-        if (lname.value.length <= 0) {    
-            alert("Last Name is required");    
-            lname.focus();    
-            return false;    
-        } 
-        if(age.value.length<= 0){
-            alert("Enter Age");
-            age.focus();
-            return false;
-        }   
-        
-        if (gender.value.length <= 0) {    
-            alert("Gender is required");    
-            gender.focus();    
-            return false;    
-        }    
-        if (Email.value.length <= 0) {    
-            alert("Email Id is required");    
-            Email.focus();    
-            return false;    
-        }    
-        return false;
-    }
+  
         
 </script>    
 </head>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 
 
 <div class="main">
     <div class="register">
         <h2>USER PROFILE</h2>
-        <form name="RegForm" onsubmit="return validate()" id="register" method="post">
+        <form class="form container">
             
+           
+            <div class="mb-3">
+              <label for="exampleInputfirstName" class="form-label1">First Name  </label>
+              <input type="text" class="form-control" id="exampleInputfirstName">
+              &nbsp &nbsp &nbsp
+              <button id="button1"> Edit </button>
+            </div>
+            <br>
+            <div class="mb-3">
+              <label for="exampleInputlastname" class="form-label2">Last Name  </label>
+              <input type="text" class="form-control" id="exampleInputlastname">
+              &nbsp &nbsp &nbsp
+              <button id="button2"> Edit </button>
+            </div>
+            <br>
+           
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label3">Email    </label>&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                &nbsp &nbsp &nbsp
+                <button id="button3"> Edit </button>
+              </div>
+              <br>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label4">Password  </label>&nbsp
+                <input type="password" class="form-control" id="exampleInputPassword1">
+                &nbsp &nbsp &nbsp
+                <button id="button4"> Edit </button>
+              </div>
+              <br>
+             
             
-            <br><br>
-        
-        </form>
+          </form>
     </div>

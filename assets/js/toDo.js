@@ -114,5 +114,8 @@ function updatetask(_this){
 }
 
 
-
+function showdata(event){
+$(".form-label1").val()= "Priyaa"
+$(".form-label1").val()= "Priyaa"
+}
 

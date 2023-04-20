@@ -195,7 +195,7 @@ footer{
 	transition: 0.4s;
 }
 
-nav ul li a#log , nav ul li a#profile{
+nav button .btn1 , nav button .btn2{
 	background-color:#faaca8;
 	color: black;
 	padding: 14px 25px;
@@ -206,19 +206,36 @@ nav ul li a#log , nav ul li a#profile{
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	border-radius: 5ch;
 	border-color: black;
-    
+    appearance: auto;
 }
 
-div button #log , div button #profile{
-	background-color:#eeecec;
-	color: black;
-	padding: 14px 25px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: x-large;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	border-radius: 5ch;
-	border-color: black;
-	appearance: auto;
+.navbar{
+
+	display: flex;
+	justify-content: flex-end !important;
 }
+
+.navbar button{
+	margin-right: 16px;
+	background-color: white;
+	border-color: black;
+	border-radius: 0.5ch;
+	font-size: larger;
+	
+}
+.form{
+	display: none;
+	pointer-events: none;
+}
+
+a.btn2  , a.btn1{
+	margin-right: 8px;
+	background-color: white;
+	border-color: black;
+	border-radius: 0.5ch;
+	color:black;
+	font-size: larger;
+
+}
+
+
