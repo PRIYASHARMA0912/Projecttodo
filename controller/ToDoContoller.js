@@ -134,7 +134,19 @@ const userData = async(req , res)=>{
         console.log(error)
     }
 }
+  const updateUserProfile = async(req,res) => {
+   
+    const newFirstname = req.body.updatedfirstname
+    const newLastname = req.body.updatedlastname
+    const newEmail = req.body.updatedemail
+    console.log(newFirstname);
+    console.log(newLastname);
+    console.log(newEmail);
+    const updatedProfileObj = await users.update({firstName : req.body.updatedfirstname , lastName :req.body.updatedlastname ,email: req.body.updatedemail } , {where : {id : req.user.id}})
+    console.log(updatedProfileObj)
+    return res.json({message:"updated userProfile", status:true , finalProfileobj :updatedProfileObj  })
 
+  }
 
 module.exports = {
     index,
@@ -144,5 +156,6 @@ module.exports = {
     check,
     deleteall,
     getSingleTodo,
-    userData
+    userData,
+    updateUserProfile
 }

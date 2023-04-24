@@ -16,32 +16,29 @@
            
         
     </nav>
-
-       <form class="form container" id="formcontainer">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label" >Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
-         
-          
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-         
-          <i class="fa-solid fa-pen"></i>
-          <div><button type="button" data-toggle="modal" class="btn" data-target="#exampleModal">Change Password</button></div>
-        </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form class="form container" >
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" readonly >
+        <button type="button" id="submitemail" onclick="allowEdit1(event)"><i class="fa-solid fa-pen"></i></button>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" readonly >
+        <button type="button" data-toggle="modal" class="btn" data-target="#exampleModal"><i class="fa-solid fa-pen"></i></button>
+       
+      </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Your Password</h1>
                 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                  <input type="password" class="form-control" placeholder="Old Password" id="oldPass">
-                  <input type="password" class="form-control" placeholder="New Password" id="newPass">
+                  <input type="password" class="form-control" placeholder="New Password" id="oldPass">
+                  <input type="password" class="form-control" placeholder="Confirm New Password" id="newPass">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -50,22 +47,20 @@
             </div>
           </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputfirstName" class="form-label" >First Name</label>
-          <input type="text" class="form-control" id="exampleInputfirstName">
-          
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputlastname" class="form-label">Last Name</label>
-          <input type="text" class="form-control" id="exampleInputlastname">
-      
-        </div>
-        <button type="submit" class="btn btn-primary" id="btnprimary">Cancel</button>
-        <button type="submit" class="btn btn-primary">Update</button>
-      
+      <div class="mb-3">
+        <label for="exampleInputfirstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="exampleInputfirstName" readonly >
+        <button type="button" id="submitfirstName" onclick="allowEdit2(event)"><i class="fa-solid fa-pen"></i></button>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputlastname" class="form-label" >Last Name</label>
+        <input type="text" class="form-control" id="exampleInputlastname" readonly >
+        <button type="button" id="submitlastName" onclick="allowEdit3(event)"><i class="fa-solid fa-pen"></i></button>
+      </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      <button type="submit" class="btn btn-primary">Cancel</button>
+      <button type="submit" class="btn btn-primary" id="submitAll" onclick="updateProfile(event)">Update</button>
+    </form>
        <header id="header">
         <h1><b>TASKS FOR THE DAY</b></h1>
         <br>
@@ -81,6 +76,8 @@
             </form>
           <br>
     
+    
+
         </header>
         <main id="main">
             <section class="tasklist">

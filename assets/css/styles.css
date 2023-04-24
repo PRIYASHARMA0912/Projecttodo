@@ -30,6 +30,11 @@ header h1{
 
 }
 
+.form{
+	display: none;
+	pointer-events: none;
+}
+
 #taskform {
 	display: flex;
 }
@@ -240,7 +245,7 @@ input#userButton  , a#btn1{
 
  form#formcontainer 
  {
-	background-color:white;
+	
     width: 80%;
     font-size:25px;
     border-radius: 281px;
@@ -295,3 +300,16 @@ button .btn{
 	margin-left: 20ch;
 	text-align: justify;
 }
+
+button#editbtn1{
+	background-color: #4CAF50; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin-left: 90ch;
+}
+

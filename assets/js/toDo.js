@@ -114,7 +114,7 @@ function updatetask(_this){
 }
 
 function userProfile(_this){
-    event.preventDefault()
+    
     console.log("this is working");
     document.querySelector('#header').style.display = "none";
     document.querySelector('#header').style.pointerEvents = "none";
@@ -137,7 +137,63 @@ function userProfile(_this){
             $('#exampleInputPassword1').val(response.object.password);
          }
     })
+        
+}
+function editFirstname(event){
+    event.preventDefault()
+    console.log("button is working");
+     const updatedfirstname=$('#exampleInputfirstName').val();
+     console.log(updatedfirstname)
+     $.ajax({
+        type:"PUT",
+        url:"/toDo/updateFirstname",
+        data: {updatedfirstname},
+        success :
+        function (response){
+            console.log(response);
+        }
+     })
+}
+
 function gotoHome(event){
     window.location.reload();
-}           
+} 
+  
+function allowEdit1(event)
+{
+    $('#exampleInputEmail1').removeAttr("readonly");
+    console.log("removed");
+}
+
+function allowEdit2(event)
+{
+    $('#exampleInputfirstName').removeAttr("readonly");
+    console.log("removed");
+}
+
+function allowEdit3(event)
+{
+    $('#exampleInputlastname').removeAttr("readonly");
+    console.log("removed");
+}
+
+function updateProfile(event){
+    event.preventDefault()
+    console.log("button is working");
+    const updatedfirstname=$('#exampleInputfirstName').val();
+    const updatedlastname=$('#exampleInputlastname').val();
+    const updatedemail=$('#exampleInputEmail1').val();
+    console.log(updatedfirstname)
+    console.log(updatedlastname)
+    console.log(updatedemail)
+    $.ajax({
+        type: "PUT",
+        url: "/toDo/updateProfile",
+        data: {updatedfirstname ,updatedlastname, updatedemail },
+        success:
+           function (response){
+            console.log(response);
+           }
+    })
+
 }
